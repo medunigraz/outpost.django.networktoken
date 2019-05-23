@@ -7,19 +7,25 @@ from django.db import migrations, models
 
 class Migration(migrations.Migration):
 
-    dependencies = [
-        ('networktoken', '0003_radius_schema'),
-    ]
+    dependencies = [("networktoken", "0003_radius_schema")]
 
     operations = [
         migrations.CreateModel(
-            name='Login',
+            name="Login",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('username', models.CharField(default='', max_length=256)),
-                ('password', models.CharField(default='', max_length=256)),
-                ('response', models.CharField(default='', max_length=256)),
-                ('created', models.DateTimeField()),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("username", models.CharField(default="", max_length=256)),
+                ("password", models.CharField(default="", max_length=256)),
+                ("response", models.CharField(default="", max_length=256)),
+                ("created", models.DateTimeField()),
             ],
-        ),
+        )
     ]

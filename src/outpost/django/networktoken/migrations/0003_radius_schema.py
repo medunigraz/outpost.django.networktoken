@@ -7,15 +7,13 @@ from django.db import migrations
 
 class Migration(migrations.Migration):
 
-    dependencies = [
-        ('networktoken', '0002_token_purpose'),
-    ]
+    dependencies = [("networktoken", "0002_token_purpose")]
 
     forward = [
-        '''
+        """
         CREATE SCHEMA "radius";
-        ''',
-        '''
+        """,
+        """
         CREATE OR REPLACE VIEW "radius"."token" AS SELECT
             n.id AS id,
             'guest_' || n.id::varchar AS UserName,
@@ -25,8 +23,8 @@ class Migration(migrations.Migration):
         FROM
             "public"."networktoken_token" n
         WHERE n.created + n.lifetime > NOW();
-        ''',
-        '''
+        """,
+        """
         CREATE TABLE "radius"."reply" (
             id serial PRIMARY KEY,
             UserName text NOT NULL DEFAULT '',
@@ -34,24 +32,19 @@ class Migration(migrations.Migration):
             op VARCHAR(2) NOT NULL DEFAULT '=',
             Value text NOT NULL DEFAULT ''
         );
-        ''',
+        """,
     ]
 
     reverse = [
-        '''
+        """
         DROP VIEW "radius"."token";
-        ''',
-        '''
+        """,
+        """
         DROP TABLE "radius"."reply";
-        ''',
-        '''
+        """,
+        """
         DROP SCHEMA "radius";
-        ''',
+        """,
     ]
 
-    operations = [
-        migrations.RunSQL(
-            forward,
-            reverse
-        )
-    ]
+    operations = [migrations.RunSQL(forward, reverse)]

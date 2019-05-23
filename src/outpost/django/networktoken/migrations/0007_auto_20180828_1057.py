@@ -9,14 +9,20 @@ from django.db import migrations, models
 
 class Migration(migrations.Migration):
 
-    dependencies = [
-        ('networktoken', '0006_radius_permissions'),
-    ]
+    dependencies = [("networktoken", "0006_radius_permissions")]
 
     operations = [
         migrations.AlterField(
-            model_name='token',
-            name='lifetime',
-            field=models.DurationField(default=datetime.timedelta(0, 21600), validators=[django.core.validators.MaxValueValidator(datetime.timedelta(1)), django.core.validators.MinValueValidator(datetime.timedelta(0, 3600))]),
-        ),
+            model_name="token",
+            name="lifetime",
+            field=models.DurationField(
+                default=datetime.timedelta(0, 21600),
+                validators=[
+                    django.core.validators.MaxValueValidator(datetime.timedelta(1)),
+                    django.core.validators.MinValueValidator(
+                        datetime.timedelta(0, 3600)
+                    ),
+                ],
+            ),
+        )
     ]

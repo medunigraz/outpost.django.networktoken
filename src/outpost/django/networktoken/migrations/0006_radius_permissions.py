@@ -8,34 +8,26 @@ from django.db import migrations
 
 class Migration(migrations.Migration):
 
-    dependencies = [
-        ('networktoken', '0005_protocol_view'),
-    ]
+    dependencies = [("networktoken", "0005_protocol_view")]
 
     forward = [
-        f'''
+        f"""
         GRANT USAGE ON SCHEMA radius TO {settings.RADIUS_USER};
-        ''',
-        f'''
+        """,
+        f"""
         GRANT SELECT ON radius.token TO {settings.RADIUS_USER};
-        ''',
-        f'''
+        """,
+        f"""
         GRANT SELECT ON radius.reply TO {settings.RADIUS_USER};
-        ''',
-        f'''
+        """,
+        f"""
         GRANT INSERT ON radius.protocol TO {settings.RADIUS_USER};
-        ''',
-        f'''
+        """,
+        f"""
         GRANT USAGE, SELECT ON SEQUENCE public.networktoken_login_id_seq TO {settings.RADIUS_USER};
-        ''',
+        """,
     ]
 
-    reverse = [
-    ]
+    reverse = []
 
-    operations = [
-        migrations.RunSQL(
-            forward,
-            reverse
-        )
-    ]
+    operations = [migrations.RunSQL(forward, reverse)]

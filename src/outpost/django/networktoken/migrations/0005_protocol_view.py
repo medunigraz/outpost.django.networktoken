@@ -7,30 +7,23 @@ from django.db import migrations
 
 class Migration(migrations.Migration):
 
-    dependencies = [
-        ('networktoken', '0004_login'),
-    ]
+    dependencies = [("networktoken", "0004_login")]
 
     forward = [
-        '''
+        """
         CREATE VIEW "radius"."protocol" AS SELECT
             n.username AS username,
             n.password AS pass,
             n.response AS reply,
             n.created AS authdate
         FROM "public"."networktoken_login" n;
-        ''',
+        """
     ]
 
     reverse = [
-        '''
+        """
         DROP VIEW "radius"."protocol";
-        ''',
+        """
     ]
 
-    operations = [
-        migrations.RunSQL(
-            forward,
-            reverse
-        )
-    ]
+    operations = [migrations.RunSQL(forward, reverse)]

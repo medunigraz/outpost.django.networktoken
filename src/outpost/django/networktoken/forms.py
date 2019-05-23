@@ -5,14 +5,8 @@ from . import models
 
 
 class TokenForm(forms.ModelForm):
-    compliance = forms.BooleanField(
-        required=True,
-        label=_('Data protection agreement')
-    )
+    compliance = forms.BooleanField(required=True, label=_("Data protection agreement"))
 
     class Meta:
         model = models.Token
-        fields = (
-            'purpose',
-            'lifetime',
-        )
+        fields = ("purpose", "lifetime")
