@@ -3,26 +3,39 @@
 {% load i18n %}
 
 {% block content %}
-<div class="page-header">
+<div class="border-bottom mb-2">
   <h1>
     {% trans "Your new network token" %}
   </h1>
 </div>
-<p>
-{% blocktrans %}
-TODO: Some description on how to use this.
-{% endblocktrans %}
-</p>
-<h3>{% trans "Username" %}</h3>
-<div class="well text-center">
-guest_{{ token.pk }}
+<div class="alert alert-info" role="alert">
+  <i class="fa fa-info-circle" aria-hidden="true"></i>
+  {% blocktrans %}
+  TODO: Some description on how to use this.
+  {% endblocktrans %}
 </div>
-<h3>{% trans "Password" %}</h3>
-<div class="well text-center">
+<div class="row no-gutters mb-1">
+  <div class="col-md-3 p-2 bg-light text-dark">
+    {% trans "Username" %}
+  </div>
+  <div class="col p-2 bg-white text-dark">
+    <code>guest_{{ token.pk }}</code>
+  </div>
+</div>
+<div class="row no-gutters mb-1">
+  <div class="col-md-3 p-2 bg-light text-dark">
+    {% trans "Password" %}
+  </div>
+  <div class="col p-2 bg-white text-dark">
     <code>{{ token.value }}</code>
+  </div>
 </div>
-<h3>{% trans "Expiration" %}</h3>
-<div class="well text-center">
-{{ token.expires |date:"DATETIME_FORMAT" }}
+<div class="row no-gutters mb-1">
+  <div class="col-md-3 p-2 bg-light text-dark">
+    {% trans "Expiration" %}
+  </div>
+  <div class="col p-2 bg-white text-dark">
+    {{ token.expires |date:"DATETIME_FORMAT" }}
+  </div>
 </div>
 {% endblock %}
